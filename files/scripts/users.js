@@ -20,7 +20,7 @@ $(document).ready(function() {
 
       if (checkType === 'modify'){
          $.ajax({ 
-          url:'http://localhost:3000/user/update',
+          url:'https://progectstudentapp.herokuapp.com/user/update',
           type: 'post',
           dataType: 'JSON',
           data: item
@@ -38,7 +38,7 @@ $(document).ready(function() {
          });
       }else{
           $.ajax({
-          url:'http://localhost:3000/user/create', 
+          url:'https://progectstudentapp.herokuapp.com/user/create', 
           type: 'post',
           dataType: 'JSON',
           data: item
@@ -64,7 +64,7 @@ $(document).ready(function() {
       //console.log(username);
 
       $.ajax({
-          url:'http://localhost:3000/user/delete'+'?'+$.param({"username":username}), 
+          url:'https://progectstudentapp.herokuapp.com/user/delete'+'?'+$.param({"username":username}), 
           type: 'delete',
           dataType: 'JSON'                 
       }).done(function(response){
@@ -84,7 +84,7 @@ $(document).ready(function() {
       let username = $(this).val();
 
       $.ajax({
-          url:'http://localhost:3000/user/findOne'+'?'+$.param({'username':username}),
+          url:'https://progectstudentapp.herokuapp.com/user/findOne'+'?'+$.param({'username':username}),
           type:'get',
           dataType:'JSON'
       }).done(function(response){
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
 function getData(){
   $.ajax({
-      url:'http://localhost:3000/user/findAll', type:'get',
+      url:'https://progectstudentapp.herokuapp.com/user/findAll', type:'get',
       dataType:'JSON'
   })
   .done(function(response){
