@@ -127,34 +127,34 @@ function getData(){
   });
 }
 
-  function createTbody(data){
-  $('#userTable > tbody').empty();
+function createTbody(data){
+$('#userTable > tbody').empty();
 
-  let len = data.length;
+let len = data.length;
 
-  for (let i=0; i<len; i++){
-      let username = data[i].username;
-      let name = data[i].name;
-      let surname = data[i].surname;
-      let category = data[i].category;
-      let email = data[i].email;
+for (let i=0; i<len; i++){
+    let username = data[i].username;
+    let name = data[i].name;
+    let surname = data[i].surname;
+    let category = data[i].category;
+    let email = data[i].email;
 
-      console.log(username,name);
+    console.log(username,name);
 
-      let tr_str = "<tr>" + 
-          "<td>" + username + "</td>" + 
-          "<td>" + name + "</td>" + 
-          "<td>" + surname + "</td>" + 
-          "<td>" + category + "</td>" + 
-          "<td>" + email + "</td>" + 
-          "<td>" + 
-              "<button class='btnUpdate btn btn-primary' value=\'" + username +"\'>Τροποποιηση</button>" +
-              "<button class='btnDelete btn btn-primary' value=\'" + username +"\'>Διαγραφη</button>" +
-          "</td>" + 
-          "</tr>";
-              //console.log(tr_str);
-      $('#userTable tbody').append(tr_str);         
-  }
+    let tr_str = "<tr>" + 
+        "<td>" + username + "</td>" + 
+        "<td>" + name + "</td>" + 
+        "<td>" + surname + "</td>" + 
+        "<td>" + category + "</td>" + 
+        "<td>" + email + "</td>" + 
+        "<td>" + 
+            "<button class='btnUpdate btn btn-primary' value=\'" + username +"\'>Τροποποιηση</button>" +
+            "<button class='btnDelete btn btn-primary' value=\'" + username +"\'>Διαγραφη</button>" +
+        "</td>" + 
+        "</tr>";
+            //console.log(tr_str);
+    $('#userTable tbody').append(tr_str);         
+}
 }
 
 function alert(status, message){
