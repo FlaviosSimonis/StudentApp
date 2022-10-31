@@ -49,7 +49,7 @@
     </div>
 </nav>
 
-  <div class="container border bg-light py-3 my-3">
+  <div class="container border bg-light px-auto mx-auto py-3 my-3">
     <h2>Κατάλογος Μαθημάτων</h2>
 
     <form action="" method="post" id="frmCourses">
@@ -77,25 +77,26 @@
   </div>
 
   <hr>
+  <div class="container border bg-light px-auto mx-auto py-3 my-3">
+    <div class="row justify-content-center">
+      <table id="coursesTable" class="table table striped table-hover caption-top w-auto">
+        <caption>Κατάλογος Μαθημάτων</caption>
+        <thead>
+          <tr>
+            <!-- <th>Id</th> -->
+            <th>Μάθημα</th>
+            <th>Περιγραφή</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
 
-  <div class="row justify-content-center">
-    <table id="coursesTable" class="table table striped table-hover caption-top w-auto">
-      <caption>Κατάλογος Μαθημάτων</caption>
-      <thead>
-        <tr>
-          <!-- <th>Id</th> -->
-          <th>Μάθημα</th>
-          <th>Περιγραφή</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
+        </tbody>
+      </table>
+    </div>
 
-      </tbody>
-    </table>
-  </div>
-
-  <div class="row row-cols-5 justify-content-center w">
-    <a class="btn btn-dark" href="./index.html">Επιστροφή</a>
+    <div class="row row-cols-3 justify-content-center w">
+      <a class="btn btn-dark" href="./index.html">Επιστροφή</a>
+    </div>
   </div>
   
 </body>
