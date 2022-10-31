@@ -106,7 +106,11 @@ $(document).ready(function() {
               alert(false, "Πρόβλημα στη αναζήτηση του χρήστη (" + data.message + ")");
           }
       });
-  });       
+  });     
+  
+  $('.row').on('click', '.btnReset', function () { 
+    resetForm();
+  });
 });
 
 function getData(){

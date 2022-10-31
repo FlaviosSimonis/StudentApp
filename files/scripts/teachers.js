@@ -1,7 +1,7 @@
 $(document).ready(function() {
   getData();
 
-  $('row').on('click','btnSubmit', function(){
+  $('.row').on('click','.btnSubmit', function(){
     let firstname = $('#firstname').val();
     let lastname = $('#lastname').val();
 
@@ -94,6 +94,10 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.row').on('click', '.btnReset', function () { 
+    resetForm();
+  });
 });
 
 function getData(){
@@ -128,9 +132,9 @@ function createTbody(data){
                  "<td>" + firstname + "</td>" +
                  "<td>" + lastname + "</td>" + 
                  "<td>" + 
-                      "<button class='btnUpdate btn btn-primary' value=\'" + 
+                      "<button class='btnUpdate btn btn-dark' value=\'" + 
                       lastname + "\'>Τροποποίηση</button>" +
-                      "<button class='btnDelete btn btn-primary' value=\'" + 
+                      "<button class='btnDelete btn btn-dark' value=\'" + 
                       lastname + "\'>Διαγραφή</button>" + 
                  "</td>" +
                  "</tr>";
@@ -151,6 +155,6 @@ function alert(status, message){
 }
 
 function resetForm(){
-  $("#frmStudent")[0].reset();
+  $("#frmTeacher")[0].reset();
   $('.btnSubmit').val('insert');
 }

@@ -12,47 +12,25 @@ connection.once("open", ()=>{
   console.log("Connected to Database(courses collection) successfully");
 });
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var coursesSchema = new Schema(
-
-  {
-    name:{
-      type:String,
-      required:[true, 'name is required'],
-          },
-    description:{
-      type:String
-          },
-    teacher:{
-      firstname: {
-        type:String, 
-      },
-      lastname: {
-        type:String, 
-      }
-            },
-    student:
-    [
-      {
-      firstname: {
-        type:String, 
-                  },
-      lastname: {
-        type:String, 
-                }
-      },
-      {
-      firstname: {
-        type:String, 
-                },
-      lastname: {
-        type:String, 
-                }
-      }
-    ]
+const coursesSchema = new Schema({
+  name:{
+    type:String,
+    required:[true, 'name is required'],
+  },
+  description:{
+    type:String
+  },
+  teacher:{
+    type: String,
+    default: ""
+  },
+  student:{
+    type: [ String ],
+    default: []
   }
-);
+});
 
 coursesSchema.plugin(uniqueValidator);
 

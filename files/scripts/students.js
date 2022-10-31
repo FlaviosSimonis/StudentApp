@@ -1,7 +1,7 @@
 $(document).ready(function() {
   getData();
 
-  $('row').on('click','btnSubmit', function(){
+  $('.row').on('click','.btnSubmit', function(){
     let firstname = $('#firstname').val();
     let lastname = $('#lastname').val();
 
@@ -9,6 +9,8 @@ $(document).ready(function() {
       'firstname': firstname,
       'lastname': lastname
     };
+
+    console.log(item);
 
     const checkType = $('.btnSubmit').val();
 
@@ -72,10 +74,14 @@ $(document).ready(function() {
   });
 
   $('#tbody').on('click','.btnUpdate', function(){
-    let lastname = $(this).val();
+    let name = $(this).val().split("-");
+    let lastname = name[1];
+    let firstname = name[0];
+
+    console.log(">>>",firstname);
 
     $.ajax({
-      url:'http://localhost:5000/student/findOne'+'?'+$.param({'lastname':lastname}),
+      url:'http://localhost:5000/student/findOne'+'?'+$.param({'lastname':lastname,'firstname':firstname}),
       type:'get',
       dataType: 'JSON'
     }).done(function(response){
@@ -93,6 +99,10 @@ $(document).ready(function() {
         alert(false, "Πρόβλημα στην αναζήτηση του μαθητή (" + data.message + ")");
       }
     });
+  });
+
+  $('.row').on('click', '.btnReset', function () { 
+    resetForm();
   });
 });
 
@@ -121,16 +131,16 @@ function createTbody(data){
   for(let i = 0; i < len; i++){
     let firstname = data[i].firstname;
     let lastname = data[i].lastname;
-
-    console.log(firstname, lastname)
+    let name = firstname +"-"+lastname;
+    console.log(firstname, lastname, name)
 
     let tr_str = "<tr>" +
                  "<td>" + firstname + "</td>" +
                  "<td>" + lastname + "</td>" + 
                  "<td>" + 
-                      "<button class='btnUpdate btn btn-primary' value=\'" + 
-                      lastname + "\'>Τροποποίηση</button>" +
-                      "<button class='btnDelete btn btn-primary' value=\'" + 
+                      "<button class='btnUpdate btn btn-dark' value=\'" + 
+                      name + "\'>Τροποποίηση</button>" +
+                      "<button class='btnDelete btn btn-dark' value=\'" + 
                       lastname + "\'>Διαγραφή</button>" + 
                  "</td>" +
                  "</tr>";

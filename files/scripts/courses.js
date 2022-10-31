@@ -1,7 +1,7 @@
 $(document).ready(function() {
   getData();
 
-  $('row').on('click','btnSubmit', function(){
+  $('.row').on('click','.btnSubmit', function(){
     let name = $('#name').val();
     let description = $('#description').val();
 
@@ -94,6 +94,10 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.row').on('click', '.btnReset', function () { 
+    resetForm();
+  });
 });
 
 function getData(){
@@ -128,12 +132,13 @@ function createTbody(data){
                  "<td>" + name + "</td>" +
                  "<td>" + description + "</td>" + 
                  "<td>" + 
-                      "<button class='btnUpdate btn btn-primary' value=\'" + 
+                      "<button class='btnUpdate btn btn-dark' value=\'" + 
                       name + "\'>Τροποποίηση</button>" +
-                      "<button class='btnDelete btn btn-primary' value=\'" + 
+                      "<button class='btnDelete btn btn-dark' value=\'" + 
                       name + "\'>Διαγραφή</button>" + 
                  "</td>" +
                  "</tr>";
+                 
     $('#coursesTable tbody').append(tr_str);                  
   }
 }

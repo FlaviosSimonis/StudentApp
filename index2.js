@@ -5,7 +5,7 @@ var app = express();
 var Student = require('./model/Student.js');
 var Teacher = require('./model/Teacher.js');
 var Courses = require('./model/Courses.js');
-var CourseMembers = require('./model/CourseMembers.js');
+// var CourseMembers = require('./model/CourseMembers.js');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -37,11 +37,13 @@ app.get('/student/findOne', (req,res)=>{
   console.log("Find a student");
 
   const lastname = req.query.lastname;
+  const firstname = req.query.firstname;
+  console.log(req.query);
   console.log("Find student with lastname:", lastname);
 
-  Student.findOne({'lastname': lastname}, (err, student)=>{
+  Student.findOne({'lastname': lastname,'firstname':firstname}, (err, student)=>{
     if(err){
-      console.log("Error in finding student", lastname);
+      console.log("Error in finding student", lastname, firstname);
       res.json({'status':false, 'data':student});
     }else{
       res.json({'status':true, 'data':student});
@@ -90,9 +92,11 @@ app.post('/student/update', (req,res)=>{
   console.log('Update student');
 
   const lastname = req.body.lastname;
-  console.log('Update student with lastname ', lastname);
+  const firstname = req.body.firstname;
+  console.log(req.body);
+  console.log('Update student with name ', firstname);
 
-  Student.findOne({'lastname':lastname}, (err, student)=>{
+  Student.findOne({'lastname':lastname,'firstname':firstname}, (err, student)=>{
     if(err){
       res.json({'status':false, 'data':err});
     }else{
@@ -101,7 +105,7 @@ app.post('/student/update', (req,res)=>{
 
       student.save((err)=>{
         if(err){
-          res.json({'status':false, 'data':err});
+          res.json({'status': false, 'data': err});
         }else{
           res.json({'status': true, 'data': student});
         }
@@ -133,9 +137,9 @@ app.get('/teacher/findOne', (req,res)=>{
   Teacher.findOne({'lastname': lastname}, (err, teacher)=>{
     if(err){
       console.log("Error in finding teacher", lastname);
-      res.json({'status':false, 'data':student});
+      res.json({'status':false, 'data':teacher});
     }else{
-      res.json({'status':true, 'data':student});
+      res.json({'status':true, 'data':teacher});
     }
   });
 });
@@ -284,6 +288,117 @@ app.post('/courses/update', (req,res)=>{
       courses.save((err)=>{
         if(err){
           res.json({'status':false, 'data':err});
+        }else{
+          res.json({'status': true, 'data': courses});
+        }
+      });
+    }
+  });
+});
+
+//CourseMembers
+app.get('/courses/members/findAll', (req, res)=>{
+  console.log('Get all course members');
+
+  //Finding courses of category Database
+  Courses.find().then(courses=>{
+    console.log("Find all courses");
+
+    //Getting students
+    Student.find().then(students=>{
+      console.log("Find all students");
+
+      Teacher.find().then(teacher=>{
+        console.log("Find all teachers");
+
+        let allCourses = {
+          courses: courses,
+          teachers: teacher,
+          students: students
+        };
+
+        res.json({'status':true, data: allCourses});
+      }).catch(error=>{
+        console.log("Problem in finding all teachers", error);
+        res.json({'status':false, data:error});
+      })
+    }).catch(error=>{
+      console.log("Problem in finding all students",error);
+      res.json({'status':false, data:error});
+    })
+  }).catch(error=>{
+    console.log("Problem in finding all courses", error);
+    res.json({'status':false, data:error});
+  });
+});
+
+app.get('/courses/members/findOne', (req,res)=>{
+  console.log("Find a course member");
+
+  const name = req.query.name;
+  console.log("Find course member with name:", name);
+
+  //Finding course
+  Courses.findOne({name:name}).then(courses=>{
+    console.log("Finding course with name: ", name);
+
+    let teacher_id = courses.teacher;
+    let student_id = courses.student;
+    let courses_name = courses.name
+
+    Student.find({_id: {$in:student_id}}).then(students=>{
+      console.log("Finding all students in course", courses_name);
+
+      if (teacher_id) {
+        Teacher.findById(teacher_id).then(teacher=>{
+          console.log("Finding teacher for course: ", courses_name);
+
+          let allCourses ={
+            courses: courses,
+            teachers: teacher,
+            students: students
+          };
+
+          res.json({'status': true, data:allCourses});
+        }).catch(error=>{
+          console.log("Problem in finding teacher", error);
+          res.json({'status':false, data:error});
+        })
+      } else {
+        let allCourses ={
+          courses: courses,
+          teachers: "",
+          students: students
+        };
+
+        res.json({'status': true, data:allCourses});
+      }
+    }).catch(error=>{
+      console.log("Problem in finding all students", error);
+      res.json({'status':false, data:error});
+    })
+  }).catch(error=>{
+    console.log("Problem in finding course", error);
+    res.json({'status':false, data:error});
+  })
+});
+
+app.post('/courses/members/update', (req,res)=>{
+  console.log('Update course member');
+
+  const name = req.body.name;
+  console.log('Update course member with name ', name);
+
+  Courses.findOne({'name':name}, (err, courses)=>{
+    if(err){
+      res.json({'status':false, 'data':err});
+    }else{
+      courses.teacher = req.body.teacher;
+      courses.student = req.body.student;
+
+      courses.save((err)=>{
+        if(err){
+          res.json({'status': false,'data':err});
         }else{
           res.json({'status': true, 'data': courses});
         }
