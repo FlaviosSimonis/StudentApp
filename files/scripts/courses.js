@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     if (checkType === 'modify'){
       $.ajax({
-        url:'http://localhost:5000/courses/update',
+        url:'https://progectstudentapp.herokuapp.com/courses/update',
         type: 'post',
         dataType:'JSON',
         data: item
@@ -32,7 +32,7 @@ $(document).ready(function() {
       });
     }else{
       $.ajax({
-        url:'http://localhost:5000/courses/create',
+        url:'https://progectstudentapp.herokuapp.com/courses/create',
         type: 'post',
         dataType: 'JSON',
         data: item
@@ -55,7 +55,7 @@ $(document).ready(function() {
     let name = $(this).val();
 
     $.ajax({
-      url:'http://localhost:5000/courses/delete'+'?'+$.param({"name":name}),
+      url:'https://progectstudentapp.herokuapp.com/courses/delete'+'?'+$.param({"name":name}),
       type:'delete',
       dataType: 'JSON'
     }).done(function(response){
@@ -75,7 +75,7 @@ $(document).ready(function() {
     let name = $(this).val();
 
     $.ajax({
-      url:'http://localhost:5000/courses/findOne'+'?'+$.param({'name':name}),
+      url:'https://progectstudentapp.herokuapp.com/courses/findOne'+'?'+$.param({'name':name}),
       type:'get',
       dataType: 'JSON'
     }).done(function(response){
@@ -102,7 +102,7 @@ $(document).ready(function() {
 
 function getData(){
   $.ajax({
-    url:'http://localhost:5000/courses/findAll', 
+    url:'https://progectstudentapp.herokuapp.com/courses/findAll', 
     type: 'get',
     dataType: 'JSON'
   }).done(function(response){
