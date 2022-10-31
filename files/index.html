@@ -9,72 +9,66 @@
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/style.css">
         <title>StudentApp</title>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #333;">
+    <body>        
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(41, 41, 41);">
             <div class="container-fluid">
-                <a class="navbar-brand" href="https://aueb.gr/" target="_blank"><img src="../img/hermis_logo.jpg" alt="Οικονομικό Πανεπιστήμιο Αθηνών" width="48" height="auto"></a>
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button> -->
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.html"><i class="fa fa-fw fa-home"></i>Αρχική</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Χρήστες
+                        <li class="nav-item">
+                            <a class="nav-link" href="./students.html" role="button"  aria-expanded="false">
+                                Διαχείριση Μαθητών
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="users/users.html">Χρήστες</a></li>
-                                <li><a class="dropdown-item" href="users/roles.html">Ρόλοι</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="users/users-category.html">Κατηγορίες Χρηστών</a></li>
-                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./teachers.html" role="button"  aria-expanded="false">
+                              Διαχείριση Καθηγητών
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Υπηρεσίες Ιδρύματος
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Μαθήματα
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="departments/departments.html">Διευθύνσεις</a></li>
-                                <li><a class="dropdown-item" href="departments/subdepartments.html">Τμήματα</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="departments/categories.html">Κατηγορίες</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Ανακοινώσεις
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="announcements/announcements.html">Δημιουργία Ανακοινώσεων</a></li>
-                                <li><a class="dropdown-item" href="announcements/subscription.html">Εγγραφή σε λίστα</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="./courses.html">Δημιουργία/Διαγραφή Μαθήματος</a></li>
+                                <li><a class="dropdown-item" href="./coursemembers.html">Διαχείριση Μαθημάτων</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <a class="nav-link text-light text-opacity-50" href="about.html">Επικοινωνία</a>
                 </div>
             </div>
         </nav>
-        <!-- <a href="https://aueb.gr/" target="_blank">
-            <img src="../img/hermis_logo.jpg" alt="Οικονομικό Πανεπιστήμιο Αθηνών">
-        </a>
-        <a href="index.html"><i class="fa fa-fw fa-home"></i> Αρχική</a>
-        <a href="users/users.html">Χρήστες</a>
-        <a href="departments/departments.html">Υπηρεσίες Ιδρύματος</a>
-        <a href="announcements/announcements.html">Ανακοινώσεις</a>
-        <a href="about.html">Επικοινωνία</a> -->
 
-        <div class="container border bg-light py-3 my-3 shadow p-3 mb-5 bg-body rounded">
+        <div class="video-wrapper">
 
-            <h1 class="text-center">Εφαρμογή Ανακοινώσεων</h1>
-            <img class="rounded mx-auto d-block" src="../img/asoee.jpg" alt="Οικονομικό Πανεπιστήμιο Αθηνών" width="600px" height="auto">
+        <video class="video" autoplay muted loop id="video">
+          <source src="./videos/pexels-rostislav-uzunov-9150545.mp4" type="video/mp4">
+        </video>
+
+          <div class="container" > 
+            <div class="container row justify-content-center ">
+              <div class="text-center border bg-light col-6 col-sm-3 py-5 m-5 bg-body rounded shadow"><a class="btn btn-light" href="./students.html">Διαχείριση Μαθητών</a> </div>
+              <div class="text-center border bg-light col-6 col-sm-3 py-5 m-5 bg-body rounded shadow"><a class="btn btn-light"  href="./teachers.html">Διαχείριση Καθηγητών</a> </div>
             
-        </div>
-        <hr>
-        <p>© Copyright 1996 - 2022 | Athens University of Economics and Business</p>
+              <div class="w-100"></div>
+            
+              <div class="text-center border bg-light col-6 col-sm-3 py-5 m-5 bg-body rounded shadow"><a class="btn btn-light"  href="./courses.html">Δημιουργία/Διαγραφή Μαθήματος</a> </div>
+              <div class="text-center border bg-light col-6 col-sm-3 py-5 m-5 bg-body rounded shadow"><a class="btn btn-light"  href="./coursemembers.html">Διαχείριση Μαθημάτων</a> </div>
+            </div> 
+          </div> 
+      </div>
+
+        <pre>   © Copyright 2022 | StudentApp by Flavios</pre>
+
+      
     </body>
+
 </html>

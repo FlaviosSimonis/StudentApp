@@ -15,27 +15,14 @@
   height: 100%;
 }
 
-/* video {
-  object-fit: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-} */
-/* .video-wrapper {
- 
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+ul.dropdown-menu {
+  background-color: rgb(41, 41, 41);
+}
 
-/* #container{
-  position: relative;
-} */
+a.dropdown-item{
+  color:white;
+}
+
 
 
 

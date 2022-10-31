@@ -5,14 +5,16 @@ $(document).ready(function() {
     let firstname = $('#firstname').val();
     let lastname = $('#lastname').val();
 
+    const checkType = $('.btnSubmit').val().split("-")[0];
+    const id = $('.btnSubmit').val().split("-")[1];
+
     let item = {
+      'id':id,
       'firstname': firstname,
       'lastname': lastname
     };
 
     console.log(item);
-
-    const checkType = $('.btnSubmit').val();
 
     if (checkType === 'modify'){
       $.ajax({
@@ -54,10 +56,10 @@ $(document).ready(function() {
   });
 
   $('#tbody').on('click', '.btnDelete', function(){
-    let lastname = $(this).val();
+    let id = $(this).val();
 
     $.ajax({
-      url:'http://localhost:5000/student/delete'+'?'+$.param({"lastname":lastname}),
+      url:'http://localhost:5000/student/delete'+'?'+$.param({"id":id}),
       type:'delete',
       dataType: 'JSON'
     }).done(function(response){
@@ -74,14 +76,10 @@ $(document).ready(function() {
   });
 
   $('#tbody').on('click','.btnUpdate', function(){
-    let name = $(this).val().split("-");
-    let lastname = name[1];
-    let firstname = name[0];
-
-    console.log(">>>",firstname);
+    let id = $(this).val();
 
     $.ajax({
-      url:'http://localhost:5000/student/findOne'+'?'+$.param({'lastname':lastname,'firstname':firstname}),
+      url:'http://localhost:5000/student/findOne'+'?'+$.param({'id':id}),
       type:'get',
       dataType: 'JSON'
     }).done(function(response){
@@ -92,9 +90,8 @@ $(document).ready(function() {
         $('#firstname').val(data.firstname);
         $('#lastname').val(data.lastname);
 
-        // $('#lastname').prop("disabled", true);
-
-        $('.btnSubmit').val('modify');
+        let str = 'modify' + "-" + id;
+        $('.btnSubmit').val(str);
       }else{
         alert(false, "Πρόβλημα στην αναζήτηση του μαθητή (" + data.message + ")");
       }
@@ -131,17 +128,16 @@ function createTbody(data){
   for(let i = 0; i < len; i++){
     let firstname = data[i].firstname;
     let lastname = data[i].lastname;
-    let name = firstname +"-"+lastname;
-    console.log(firstname, lastname, name)
+    let id = data[i]._id;
 
     let tr_str = "<tr>" +
                  "<td>" + firstname + "</td>" +
                  "<td>" + lastname + "</td>" + 
                  "<td>" + 
                       "<button class='btnUpdate btn btn-dark' value=\'" + 
-                      name + "\'>Τροποποίηση</button>" +
+                      id + "\'>Τροποποίηση</button>" +
                       "<button class='btnDelete btn btn-dark' value=\'" + 
-                      lastname + "\'>Διαγραφή</button>" + 
+                      id + "\'>Διαγραφή</button>" + 
                  "</td>" +
                  "</tr>";
     $('#studentTable tbody').append(tr_str);                  

@@ -114,10 +114,10 @@ function createTbody(data){
                  "<td>" + courseDescription + "</td>" +
                  "<td>" + teacherF + " " + teacherL + "</td>" +
                  "<td>" + studentL + "</td>" +
-                 "<td>" + 
+                 /*"<td>" + 
                       "<button class='btnUpdate btn btn-dark' value=\'" + 
                       courseName + "\'>Τροποποίηση</button>" +
-                 "</td>" +
+                 "</td>" +*/
                  "</tr>";
 
     $('#coursesTable tbody').append(tr_str);
