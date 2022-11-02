@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     if (checkType === 'modify'){
       $.ajax({
-        url:'https://progectstudentapp.herokuapp.com/teacher/update',
+        url:'https://projectstudentapp.herokuapp.com/teacher/update',
         type: 'post',
         dataType:'JSON',
         data: item
@@ -36,7 +36,7 @@ $(document).ready(function() {
       });
     }else{
       $.ajax({
-        url:'https://progectstudentapp.herokuapp.com/teacher/create',
+        url:'https://projectstudentapp.herokuapp.com/teacher/create',
         type: 'post',
         dataType: 'JSON',
         data: item
@@ -59,7 +59,7 @@ $(document).ready(function() {
     let id = $(this).val();
 
     $.ajax({
-      url:'https://progectstudentapp.herokuapp.com/teacher/delete'+'?'+$.param({"id":id}),
+      url:'https://projectstudentapp.herokuapp.com/teacher/delete'+'?'+$.param({"id":id}),
       type:'delete',
       dataType: 'JSON'
     }).done(function(response){
@@ -79,7 +79,7 @@ $(document).ready(function() {
     let id = $(this).val();
 
     $.ajax({
-      url:'https://progectstudentapp.herokuapp.com/teacher/findOne'+'?'+$.param({'id':id}),
+      url:'https://projectstudentapp.herokuapp.com/teacher/findOne'+'?'+$.param({'id':id}),
       type:'get',
       dataType: 'JSON'
     }).done(function(response){
@@ -105,7 +105,7 @@ $(document).ready(function() {
 
 function getData(){
   $.ajax({
-    url:'https://progectstudentapp.herokuapp.com/teacher/findAll', 
+    url:'https://projectstudentapp.herokuapp.com/teacher/findAll', 
     type: 'get',
     dataType: 'JSON'
   }).done(function(response){

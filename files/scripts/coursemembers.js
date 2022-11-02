@@ -22,7 +22,7 @@ $(document).ready(function(){
     };
 
     $.ajax({
-      url:'https://progectstudentapp.herokuapp.com/courses/members/update',
+      url:'https://projectstudentapp.herokuapp.com/courses/members/update',
       type: 'post',
       dataType: 'JSON',
       data: item
@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 function getData(){
   $.ajax({
-    url:'https://progectstudentapp.herokuapp.com/courses/members/findAll',
+    url:'https://projectstudentapp.herokuapp.com/courses/members/findAll',
     type: 'get',
     dataType: 'JSON'
   }).done(function(response){
@@ -165,7 +165,7 @@ function alert(status, message){
 
 function loadData(name){
   $.ajax({
-    url:'https://progectstudentapp.herokuapp.com/courses/members/findOne'+'?'+$.param({'name':name}),
+    url:'https://projectstudentapp.herokuapp.com/courses/members/findOne'+'?'+$.param({'name':name}),
     type:'get',
     dataType:'JSON'
   })
