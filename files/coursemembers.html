@@ -49,28 +49,28 @@
     </div>
 </nav>
 
-  <div class="container border bg-light px-auto mx-auto py-3 my-3">
-    <h2>Δήλωση Μαθημάτων</h2>
+  <div class="container border bg-light px-auto mx-auto p-3 my-3">
+    <h2>Διαχείριση Μαθήματος</h2>
 
     <form action="" method="post" id="frmCourses">
       <div class="mb-3">
-        <label for="course" class="form-label">Μάθημα</label><br>
+        <label for="course" class="form-label">Μάθημα:</label><br>
         <select name="courses" id="courses" class="form-control">
           <option value="" selected="true" disabled="disabled">Επιλέξτε μάθημα</option>
         </select>
         </div>
       <div class="mb-3">
-        <label for="description" class="form-label">Περιγραφή</label>
+        <label for="description" class="form-label">Περιγραφή:</label>
         <textarea class="form-control" name="description" id="description" disabled></textarea>
       </div>  
       <div class="mb-3">
-        <label for="teacher" class="form-label">Καθηγητής</label><br>
+        <label for="teacher" class="form-label">Καθηγητής:</label><br>
         <select name="teachers" id="teachers" class="form-control">
           <option value="" selected="true" disabled="disabled">Επιλέξτε καθηγητή</option>
         </select>
       </div>
       <div class="mb-3">
-        <label for="students" class="form-label">Μαθητές</label>
+        <label for="students" class="form-label">Μαθητές:</label>
         <div id="studentsCheckboxes">
 
         </div>
@@ -79,22 +79,21 @@
 
     <div class="row">
       <div class="col text-center">
-        <button class="btnSubmit btn btn-dark text-center" value="insert">Υποβολή</button>
+        <button class="btnSubmit btn btn-dark text-center custom-btn mx-1" value="insert">Υποβολή</button>
       </div>
     </div>
 
-    <div class="alert" role="alert"></div>
+    <div class="alert mt-3" role="alert"></div>
   </div>
 
   <hr>
 
-  <div class="container border bg-light px-auto mx-auto py-3 my-3">
+  <div class="container border bg-light px-auto mx-auto p-3  my-3">
     <div class="row justify-content-center">
-      <table id="coursesTable" class="table table striped table-hover caption-top w-auto">
-        <caption>Λίστα μαθημάτων</caption>
+      <table id="coursesTable" class="table table-striped table-hover caption-top w-auto">
+        <caption class="text-center">Λίστα μαθημάτων</caption>
         <thead>
           <tr>
-            <!-- <th>Id</th> -->
             <th>Μάθημα</th>
             <th>Περιγραφή</th>
             <th>Καθηγητής</th>

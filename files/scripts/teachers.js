@@ -134,9 +134,9 @@ function createTbody(data){
                  "<td>" + firstname + "</td>" +
                  "<td>" + lastname + "</td>" + 
                  "<td>" + 
-                      "<button class='btnUpdate btn btn-dark' value=\'" + 
+                      "<button class='btnUpdate btn btn-dark custom-btn mb-1 mx-1' value=\'" + 
                       id + "\'>Τροποποίηση</button>" +
-                      "<button class='btnDelete btn btn-dark' value=\'" + 
+                      "<button class='btnDelete btn btn-dark custom-btn mb-1 mx-1' value=\'" + 
                       id + "\'>Διαγραφή</button>" + 
                  "</td>" +
                  "</tr>";
